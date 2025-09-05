@@ -1,0 +1,20 @@
+SG0 Design Documentation
+  Program Requirements
+    - Print explanation to screen
+    - Ask User to name a txt file
+      - error if User fails to end filename with .txt (not case sensitive)
+    - Try to open the file for READING
+      - error if file does not exist
+      - try again
+    - Read text file contents
+      - break into list of words
+        - hyphen connects two words and counts both words as one (only if there is no space between the words and the hyphen)\
+    - store words in a list object
+    - Ask User for a word (a-z and hyphen)
+    - If error point out and prompt
+    - Store word in User list and store number of times the word appears in the txt list
+    - Ask to continue or quit (Yes/No)
+    - Print out list of legal words the User entered with their word count
+    - User must hit enter to quit
+    
+  
