@@ -8,7 +8,7 @@ SG0 Design Documentation
       - try again
     - Read text file contents
       - break into list of words
-        - hyphen connects two words and counts both words as one (only if there is no space between the words and the hyphen)\
+        - hyphen connects two words and counts both words as one (only if there is no space between the words and the hyphen)
     - store words in a list object
     - Ask User for a word (a-z and hyphen)
     - If error point out and prompt
