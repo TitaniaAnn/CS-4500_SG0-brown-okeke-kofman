@@ -36,10 +36,10 @@ def userBool(prompt):
 def get_valid_txt(prompt):
     while True:
         # Get the file name from user
-        user_input = input(prompt)
+        user_input = input(prompt).strip().lower()
 
         # Check if ends in .txt
-        if user_input.lower().endswith(".txt"):
+        if user_input.endswith(".txt"):
             return user_input
         else:
                 print("ERROR: Please enter a filename ending with .txt")
@@ -47,11 +47,11 @@ def get_valid_txt(prompt):
 def get_valid_word(prompt):
     while True:
         # Get the file name from user
-        user_input = input(prompt)
+        user_input = input(prompt).strip().lower()
 
         # Check if ends in .txt
-        if re.fullmatch(r"^[a-zA-Z-]+$", user_input.strip()) and not user_input.strip().startswith('-') and not user_input.strip().endswith('-') and not ' ' in user_input.strip():
-            return user_input.strip()
+        if re.fullmatch(r"^[a-zA-Z-]+$", user_input) and not user_input.startswith('-') and not user_input.endswith('-') and not ' ' in user_input:
+            return user_input
         else:
             print("ERROR: Please enter a valid word")
                 
@@ -62,7 +62,9 @@ def read_file(filename):
             # Read file contents
             content = file.read()
             content = remove_punctuation(content).lower()
-            wordList.append(content.split())
+            temp = content.lower().split()
+            for t in temp:
+                wordList.append(t)
             return True
     except FileNotFoundError:
         # Throw if file does not exist
@@ -75,6 +77,7 @@ def read_file(filename):
         
 
 # main execution of program
+print("Explanation of program")
 while True:
     flag = False
     while not flag:
