@@ -17,4 +17,72 @@ SG0 Design Documentation
     - Print out list of legal words the User entered with their word count
     - User must hit enter to quit
     
-  
+  ---------------------------------------------------------------------------------------------------------------------------------
+BEGIN PROGRAM
+
+    DISPLAY introduction message
+
+    WHILE True
+        PROMPT user for a filename
+        CONVERT filename to lowercase
+        IF filename does not end with ".txt" THEN
+            DISPLAY "Error: filename must end with .TXT"
+            CONTINUE loop
+        ENDIF
+
+        ATTEMPT to open file
+        IF file cannot be opened THEN
+            DISPLAY "Error: file not found"
+            CONTINUE loop
+        ELSE
+            BREAK loop
+        ENDIF
+    ENDWHILE
+
+    INITIALIZE ListOfWords as empty
+
+    FOR each line in file
+        IF line ends with a hyphen and no space before it THEN
+            JOIN word with beginning of next line
+        ENDIF
+
+        SPLIT line into words using rules:
+            - letters form words
+            - hyphen may appear inside a word
+            - spaces and punctuation separate words
+        CONVERT all words to lowercase
+        ADD words to ListOfWords
+    ENDFOR
+    CLOSE file
+
+    INITIALIZE SearchHistory as empty
+
+    WHILE True
+        PROMPT user for a LegalWord
+        WHILE LegalWord contains characters outside [a–z or -]
+            IDENTIFY first invalid character
+            DISPLAY error message
+            REPROMPT for LegalWord
+        ENDWHILE
+
+        COUNT occurrences of LegalWord in ListOfWords (ignore case)
+        DISPLAY the count
+        STORE (LegalWord, count) in SearchHistory
+
+        WHILE True
+            PROMPT user "Do you want to continue? (Yes/No)"
+            IF response is in [Yes, yes, y, Y] THEN
+                BREAK inner loop and continue searching
+            ELSE IF response is in [No, no, n, N] THEN
+                DISPLAY summary of all words searched with their counts
+                DISPLAY "Program finished. Press ENTER to exit."
+                WAIT for ENTER
+                END PROGRAM
+            ELSE
+                DISPLAY "Error: invalid response"
+            ENDIF
+        ENDWHILE
+    ENDWHILE
+
+END PROGRAM
+
