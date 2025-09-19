@@ -1,7 +1,15 @@
 """
+Program built using Python 3 compiled using Thonny IDE.
 CS-4500 SG0
 Group Members: Cynthia Brown, Chuck Okeke, Aaron Kofman
-09/18/2025
+Start Date: 09/11/25
+Revision Date: 09/18/2025
+Submission Date: 09/19/25
+Sources: Google AI for quick syntax lookup
+         Used for used to help track down weird functionallity of Python
+             Stack Overflow
+             GeeksforGeeks
+             Reddit
 
 """
 # library imports
